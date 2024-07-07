@@ -14,6 +14,7 @@ This repository provides instructions for setting up and configuring RS485 commu
 
 1. Open Terminal and run the following commands:
    ```bash
+   ls -l /dev/ttyS0
    sudo chown root:dialout /dev/ttyS0
    sudo chmod g+rw /dev/ttyS0
    ```
