@@ -1,0 +1,82 @@
+[
+    {
+        "id": "a2bfafb99833a4a0",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "940035968de30dd8",
+        "type": "modbus-client",
+        "name": "PowerMetter",
+        "clienttype": "simpleser",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyS0",
+        "serialType": "RTU",
+        "serialBaudrate": "9600",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "3",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "f5775e491998684d",
+        "type": "modbus-response",
+        "z": "a2bfafb99833a4a0",
+        "name": "",
+        "registerShowMax": 20,
+        "x": 510,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "d71ede2361f78f44",
+        "type": "modbus-read",
+        "z": "a2bfafb99833a4a0",
+        "name": "Voltage",
+        "topic": "",
+        "showStatusActivities": false,
+        "logIOActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "3",
+        "dataType": "HoldingRegister",
+        "adr": "300022",
+        "quantity": "2",
+        "rate": "1",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "server": "940035968de30dd8",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 230,
+        "y": 80,
+        "wires": [
+            [
+                "f5775e491998684d"
+            ],
+            []
+        ]
+    }
+]

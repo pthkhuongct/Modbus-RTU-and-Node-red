@@ -1,0 +1,575 @@
+[
+    {
+        "id": "f83574d69f4e0668",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0d3dc7d5b6d5ce4d",
+        "type": "modbus-client",
+        "name": "metter",
+        "clienttype": "simpleser",
+        "bufferCommands": true,
+        "stateLogEnabled": false,
+        "queueLogEnabled": false,
+        "failureLogEnabled": true,
+        "tcpHost": "127.0.0.1",
+        "tcpPort": "502",
+        "tcpType": "DEFAULT",
+        "serialPort": "/dev/ttyS0",
+        "serialType": "RTU-BUFFERD",
+        "serialBaudrate": "9600",
+        "serialDatabits": "8",
+        "serialStopbits": "1",
+        "serialParity": "none",
+        "serialConnectionDelay": "100",
+        "serialAsciiResponseStartDelimiter": "0x3A",
+        "unit_id": "3",
+        "commandDelay": "1",
+        "clientTimeout": "1000",
+        "reconnectOnTimeout": true,
+        "reconnectTimeout": "2000",
+        "parallelUnitIdsAllowed": true,
+        "showErrors": false,
+        "showWarnings": true,
+        "showLogs": true
+    },
+    {
+        "id": "e26c97ae5f08b43c",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "391fe9838d9fe1a5",
+        "type": "ui_tab",
+        "name": "PHẦN MỀM QUẢN LÝ ĐIỆN NĂNG TIÊU THỤ",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "541bcfaad8f2dbe8",
+        "type": "ui_group",
+        "name": "ReActive Power Chart",
+        "tab": "391fe9838d9fe1a5",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ed08d1ea70fb93c7",
+        "type": "ui_group",
+        "name": "Voltage Chart",
+        "tab": "391fe9838d9fe1a5",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7be29760f073871a",
+        "type": "ui_group",
+        "name": "Current Chart",
+        "tab": "391fe9838d9fe1a5",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a2476b646c8fbd39",
+        "type": "ui_group",
+        "name": "Frequency Chart",
+        "tab": "391fe9838d9fe1a5",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d69bd192b28d8bb3",
+        "type": "function",
+        "z": "f83574d69f4e0668",
+        "name": "ReActive Power",
+        "func": "var buffer = Buffer.alloc(4);\n\nif (Array.isArray(msg.payload) && msg.payload.length >= 2) {\n    var high = msg.payload[0];\n    var low = msg.payload[1];\n\n    node.warn(\"High: \" + high + \", Low: \" + low);\n\n    // Ghi giá trị vào buffer với thứ tự byte hoán đổi\n    buffer.writeUInt16BE(low, 0);\n    buffer.writeUInt16BE(high, 2);\n\n    try {\n        var value = buffer.readFloatBE(0);\n        var formattedValue = parseFloat(value.toFixed(2)); // Định dạng với 2 chữ số thập phân\n        msg.payload = formattedValue;\n        node.warn(\"Converted float value (Swapped BE): \" + formattedValue);\n    } catch (e) {\n        msg.payload = \"Error converting to float: \" + e.message;\n    }\n} else {\n    msg.payload = \"Invalid data\";\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 140,
+        "wires": [
+            [
+                "74cabf1237160eb9",
+                "c5bb097cc2564df9"
+            ]
+        ]
+    },
+    {
+        "id": "74cabf1237160eb9",
+        "type": "modbus-response",
+        "z": "f83574d69f4e0668",
+        "name": "",
+        "registerShowMax": 20,
+        "x": 610,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "f5da052913467024",
+        "type": "debug",
+        "z": "f83574d69f4e0668",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 160,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "6659b86f705814f4",
+        "type": "modbus-read",
+        "z": "f83574d69f4e0668",
+        "name": "Modbus RTU Read",
+        "topic": "",
+        "showStatusActivities": false,
+        "logIOActivities": false,
+        "showErrors": false,
+        "showWarnings": true,
+        "unitid": "3",
+        "dataType": "InputRegister",
+        "adr": "16",
+        "quantity": "12",
+        "rate": "1",
+        "rateUnit": "s",
+        "delayOnStart": false,
+        "startDelayTime": "",
+        "server": "0d3dc7d5b6d5ce4d",
+        "useIOFile": false,
+        "ioFile": "",
+        "useIOForPayload": false,
+        "emptyMsgOnFail": false,
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "d69bd192b28d8bb3",
+                "f5da052913467024",
+                "a5a8c336c3cebc52",
+                "9cb6c5c2d36c1b8c",
+                "405f74e7e921c013"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "c5bb097cc2564df9",
+        "type": "ui_chart",
+        "z": "f83574d69f4e0668",
+        "name": "",
+        "group": "541bcfaad8f2dbe8",
+        "order": 0,
+        "width": "6",
+        "height": "4",
+        "label": "Công Suất Phản Kháng",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": true,
+        "colors": [
+            "#ce0fdb",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#8e4ccd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 650,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a5a8c336c3cebc52",
+        "type": "function",
+        "z": "f83574d69f4e0668",
+        "name": "Điện áp",
+        "func": "var buffer = Buffer.alloc(4);\n\nif (Array.isArray(msg.payload) && msg.payload.length >= 2) {\n    var high = msg.payload[4];\n    var low = msg.payload[5];\n\n    node.warn(\"High: \" + high + \", Low: \" + low);\n\n    // Ghi giá trị vào buffer với thứ tự byte hoán đổi\n    buffer.writeUInt16BE(low, 0);\n    buffer.writeUInt16BE(high, 2);\n\n    try {\n        var value = buffer.readFloatBE(0);\n        var formattedValue = parseFloat(value.toFixed(2)); // Định dạng với 2 chữ số thập phân\n        msg.payload = formattedValue;\n        node.warn(\"Converted float value (Swapped BE): \" + formattedValue);\n    } catch (e) {\n        msg.payload = \"Error converting to float: \" + e.message;\n    }\n} else {\n    msg.payload = \"Invalid data\";\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 220,
+        "wires": [
+            [
+                "642b36046af19aec",
+                "45831adf04a5f09b"
+            ]
+        ]
+    },
+    {
+        "id": "642b36046af19aec",
+        "type": "modbus-response",
+        "z": "f83574d69f4e0668",
+        "name": "",
+        "registerShowMax": 20,
+        "x": 630,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "45831adf04a5f09b",
+        "type": "ui_chart",
+        "z": "f83574d69f4e0668",
+        "name": "",
+        "group": "ed08d1ea70fb93c7",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Điện áp",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "250",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": true,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 700,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9cb6c5c2d36c1b8c",
+        "type": "function",
+        "z": "f83574d69f4e0668",
+        "name": "Current",
+        "func": "var buffer = Buffer.alloc(4);\n\nif (Array.isArray(msg.payload) && msg.payload.length >= 2) {\n    var high = msg.payload[6];\n    var low = msg.payload[7];\n\n    node.warn(\"High: \" + high + \", Low: \" + low);\n\n    // Ghi giá trị vào buffer với thứ tự byte hoán đổi\n    buffer.writeUInt16BE(low, 0);\n    buffer.writeUInt16BE(high, 2);\n\n    try {\n        var value = buffer.readFloatBE(0);\n        var formattedValue = parseFloat(value.toFixed(2)); // Định dạng với 2 chữ số thập phân\n        msg.payload = formattedValue;\n        node.warn(\"Converted float value (Swapped BE): \" + formattedValue);\n    } catch (e) {\n        msg.payload = \"Error converting to float: \" + e.message;\n    }\n} else {\n    msg.payload = \"Invalid data\";\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 280,
+        "wires": [
+            [
+                "bd18be20b9b60cc2",
+                "2374d1eb061a6126"
+            ]
+        ]
+    },
+    {
+        "id": "bd18be20b9b60cc2",
+        "type": "ui_gauge",
+        "z": "f83574d69f4e0668",
+        "name": "",
+        "group": "7be29760f073871a",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Current",
+        "label": "A",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 700,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "2374d1eb061a6126",
+        "type": "modbus-response",
+        "z": "f83574d69f4e0668",
+        "name": "",
+        "registerShowMax": 20,
+        "x": 650,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "5b1742f2cd2f6e66",
+        "type": "ui_chart",
+        "z": "f83574d69f4e0668",
+        "name": "",
+        "group": "a2476b646c8fbd39",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Frequency",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": true,
+        "colors": [
+            "#06e03c",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 470,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "405f74e7e921c013",
+        "type": "function",
+        "z": "f83574d69f4e0668",
+        "name": "Frequency",
+        "func": "var buffer = Buffer.alloc(4);\n\nif (Array.isArray(msg.payload) && msg.payload.length >= 2) {\n    var high = msg.payload[10];\n    var low = msg.payload[11];\n\n    node.warn(\"High: \" + high + \", Low: \" + low);\n\n    // Ghi giá trị vào buffer với thứ tự byte hoán đổi\n    buffer.writeUInt16BE(low, 0);\n    buffer.writeUInt16BE(high, 2);\n\n    try {\n        var value = buffer.readFloatBE(0);\n        var formattedValue = parseFloat(value.toFixed(2)); // Định dạng với 2 chữ số thập phân\n        msg.payload = formattedValue;\n        node.warn(\"Converted float value (Swapped BE): \" + formattedValue);\n    } catch (e) {\n        msg.payload = \"Error converting to float: \" + e.message;\n    }\n} else {\n    msg.payload = \"Invalid data\";\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 340,
+        "wires": [
+            [
+                "fd1d755e4f639aee",
+                "5b1742f2cd2f6e66"
+            ]
+        ]
+    },
+    {
+        "id": "fd1d755e4f639aee",
+        "type": "modbus-response",
+        "z": "f83574d69f4e0668",
+        "name": "",
+        "registerShowMax": 20,
+        "x": 630,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "8d76e4db879fa7bd",
+        "type": "ui_template",
+        "z": "f83574d69f4e0668",
+        "group": "",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "format": "<style>\n    .nr-dashboard-theme .md-toolbar-tools {\n        justify-content: center;\n    }\n\n    .nr-dashboard-theme .md-toolbar-tools h1 {\n        width: 100%;\n        text-align: center;\n    }\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 280,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "66d327ba6a96c357",
+        "type": "inject",
+        "z": "f83574d69f4e0668",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 80,
+        "y": 100,
+        "wires": [
+            [
+                "8d76e4db879fa7bd"
+            ]
+        ]
+    }
+]
